@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - SpamShield AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .legal-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            animation: slideUp 0.5s ease;
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .legal-header {
+            background: linear-gradient(135deg, #4e73df, #1cc88a);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .legal-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .legal-header i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .legal-content {
+            padding: 40px;
+        }
+        .legal-section {
+            margin-bottom: 30px;
+        }
+        .legal-section h2 {
+            color: #4e73df;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .legal-section p {
+            color: #666;
+            line-height: 1.8;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #4e73df;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .back-button:hover {
+            background: #2e59d9;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="legal-container">
+        <div class="legal-header">
+            <i class="fas fa-file-contract"></i>
+            <h1>{{ title }}</h1>
+            {% if last_updated %}
+            <div>Last Updated: {{ last_updated }}</div>
+            {% endif %}
+        </div>
+        <div class="legal-content">
+            {% for section in content %}
+            <div class="legal-section">
+                <h2>{{ section.title }}</h2>
+                <p>{{ section.content }}</p>
+            </div>
+            {% endfor %}
+            <div style="text-align: center;">
+                <a href="javascript:history.back()" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Go Back
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
